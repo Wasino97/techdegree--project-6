@@ -29,12 +29,16 @@ function addPhraseToDisplay(arr){
     const text = document.createElement('li');
     phrase.appendChild(text);
     text.textContent = getRandomPhraseAsArray(phrase);
-    const splitPhrase = text.textContent;
+    let splitPhrase = text.textContent;
 
-        //for (i = 0; i < splitPhrase.length; i++){
-        //    console.log(i);
-        // };
+        for (i = 0; i < splitPhrase.length; i++){
+            return (splitPhrase.charAt(i));
+            
+         };
  };
 
  //const array = getRandomPhraseAsArray(arr);
- 
+ keyBoard.addEventListener('click', (e) => {
+
+    
+ })
