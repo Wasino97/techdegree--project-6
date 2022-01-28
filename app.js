@@ -20,7 +20,21 @@ const phraseArray = [
 
 
 function getRandomPhraseAsArray(arr){
-   let phrase = phraseArray[Math.floor(Math.random() * phraseArray.length)];
-   console.log(phrase);
-};
+   let randomPhrase = phraseArray[Math.floor(Math.random() * phraseArray.length)];
+   randomPhrase = randomPhrase.split('');
+   return randomPhrase;
+}; 
 
+function addPhraseToDisplay(arr){
+    const text = document.createElement('li');
+    phrase.appendChild(text);
+    text.textContent = getRandomPhraseAsArray(phrase);
+    const splitPhrase = text.textContent;
+
+        //for (i = 0; i < splitPhrase.length; i++){
+        //    console.log(i);
+        // };
+ };
+
+ //const array = getRandomPhraseAsArray(arr);
+ 
