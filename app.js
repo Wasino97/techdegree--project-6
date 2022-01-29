@@ -10,6 +10,7 @@ btnReset.addEventListener('click', (e) => {
     overlay.style.display = "none";
 });
 
+//Array of quotes
 const phraseArray = [
     "Can't make a tomlett without breaking a couple greggs",
     "You're my boy you're my number one boy",
@@ -18,24 +19,26 @@ const phraseArray = [
     'We just walked in on mom and dad fucking us'
 ];
 
-
+//Function to pick a random quote from the array
 function getRandomPhraseAsArray(arr){
    let randomPhrase = phraseArray[Math.floor(Math.random() * phraseArray.length)];
-   randomPhrase = randomPhrase.split('');
    return randomPhrase;
 }; 
 
+//Function to split the random quote into characters and display them on the screen
 function addPhraseToDisplay(arr){
     const text = document.createElement('li');
     phrase.appendChild(text);
-    text.textContent = getRandomPhraseAsArray(phrase);
-    let splitPhrase = text.textContent;
+    let splitPhrase = getRandomPhraseAsArray().split('');
+    text.textContent = splitPhrase;
+    text.className = 'letter';
 
         for (i = 0; i < splitPhrase.length; i++){
-            return (splitPhrase.charAt(i));
-            
-         };
+            let letter = splitPhrase[i];
+            };
  };
+
+ addPhraseToDisplay();
 
  //const array = getRandomPhraseAsArray(arr);
  keyBoard.addEventListener('click', (e) => {
