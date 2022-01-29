@@ -22,21 +22,28 @@ const phraseArray = [
 //Function to pick a random quote from the array
 function getRandomPhraseAsArray(arr){
    let randomPhrase = phraseArray[Math.floor(Math.random() * phraseArray.length)];
-   return randomPhrase;
+   let phraseSplit = randomPhrase.split('');
+   return phraseSplit;
 }; 
 
 //Function to split the random quote into characters and display them on the screen
 function addPhraseToDisplay(arr){
-    const text = document.createElement('li');
-    phrase.appendChild(text);
-    let splitPhrase = getRandomPhraseAsArray().split('');
-    text.textContent = splitPhrase;
-    text.className = 'letter';
+    let splitPhrase = getRandomPhraseAsArray();
 
         for (i = 0; i < splitPhrase.length; i++){
-            let letter = splitPhrase[i];
-            };
- };
+            if (splitPhrase[i] === ''){
+                const text = document.createElement('li');
+                phrase.appendChild(text);
+                text.className = 'space';
+                text.textContent = splitPhrase;
+            } else {
+                const text = document.createElement('li');
+                phrase.appendChild(text);
+                text.className = 'letter';
+                text.textContent = splitPhrase;
+            }
+        }
+};
 
  addPhraseToDisplay();
 
