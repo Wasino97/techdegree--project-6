@@ -19,14 +19,14 @@ const phraseArray = [
     'We just walked in on mom and dad fucking us'
 ];
 
-//Function to pick a random quote from the array
+//Function to pick a random quote from the array and split into individual characters
 function getRandomPhraseAsArray(arr){
    let randomPhrase = phraseArray[Math.floor(Math.random() * phraseArray.length)];
    let phraseSplit = randomPhrase.split('');
    return phraseSplit;
 }; 
 
-//Function to split the random quote into characters and display them on the screen
+//Function to display the characters on the screen
 function addPhraseToDisplay(arr){
     let splitPhrase = getRandomPhraseAsArray();
 
