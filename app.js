@@ -21,31 +21,29 @@ const phraseArray = [
 
 //Function to pick a random quote from the array and split into individual characters
 function getRandomPhraseAsArray(arr){
-   let randomPhrase = phraseArray[Math.floor(Math.random() * phraseArray.length)];
-   let phraseSplit = randomPhrase.split('');
+   const randomPhrase = phraseArray[Math.floor(Math.random() * phraseArray.length)];
+   const phraseSplit = randomPhrase.split('');
    return phraseSplit;
 }; 
 
+let randomPhrase = getRandomPhraseAsArray();
+
 //Function to display the characters on the screen
 function addPhraseToDisplay(arr){
-    let splitPhrase = getRandomPhraseAsArray();
-
+    const splitPhrase = getRandomPhraseAsArray();
         for (i = 0; i < splitPhrase.length; i++){
-            if (splitPhrase[i] === ''){
-                const text = document.createElement('li');
-                phrase.appendChild(text);
-                text.className = 'space';
-                text.textContent = splitPhrase;
-            } else {
-                const text = document.createElement('li');
-                phrase.appendChild(text);
-                text.className = 'letter';
-                text.textContent = splitPhrase;
+            const text = document.createElement('li');
+            text.textContent = splitPhrase[i];
+            phrase.appendChild(text);
+                if (splitPhrase[i] === " "){
+                    text.className = 'space';
+                } else {
+                    text.className = 'letter';
+                }
             }
-        }
 };
 
- addPhraseToDisplay();
+ addPhraseToDisplay(randomPhrase);
 
  //const array = getRandomPhraseAsArray(arr);
  keyBoard.addEventListener('click', (e) => {
