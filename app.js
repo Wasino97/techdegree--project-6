@@ -43,10 +43,28 @@ function addPhraseToDisplay(arr){
             }
 };
 
- addPhraseToDisplay(randomPhrase);
+addPhraseToDisplay(randomPhrase);
 
- //const array = getRandomPhraseAsArray(arr);
+//check if the user clicks a letter matching a letter in the phrase
+function checkLetter(button){
+    const li = document.querySelectorAll('li');
+    let match = null;
+        for (i = 0; i < button.length; i++){
+            li = button[i];
+                if (li[i] === 'letter'){
+                    li.className = 'show';
+                    match = button.value;
+                }
+        }
+    return match;
+}
+
+ //Click event to give the clicked letter the class of chosen
  keyBoard.addEventListener('click', (e) => {
-
-    
+    const btn = e.target;
+        if(btn.tagName !== 'BUTTON' || btn.className === 'chosen') {
+            return;
+        }
+    btn.className = "chosen"
+    let letterFound = checkLetter(btn);
  })
