@@ -1,5 +1,5 @@
 const keyBoard = document.getElementById('qwerty');
-const phrase = document.getElementById('phrase');
+const phrase = document.querySelector('#phrase ul');
 const btnReset = document.getElementsByTagName('a')[0];
 
 let missed = 0;
@@ -13,7 +13,7 @@ btnReset.addEventListener('click', (e) => {
 //Array of quotes
 const phraseArray = [
     "cant make a tomlett without breaking a couple greggs",
-    "youre my boy you're my number one boy",
+    "youre my boy youre my number one boy",
     'then how about tom with some fucking greg sprinkles',
     'connor roy was intrested in politics from a very young age',
     'we just walked in on mom and dad fucking us'
@@ -76,19 +76,18 @@ function checkLetter(button){
  })
 
  function checkWin(){
-    const letterClass = document.querySelectorAll('.letter');
-    const showClass = document.querySelectorAll('.show');
-    const headline = document.querySelector('h2','.title');
-    if(letterClass.length === showClass.length) {
+    const letter = document.getElementsByClassName('letter');
+    const show = document.getElementsByClassName('show');
+    const overlay = document.getElementById('overlay');
+    const title =  document.querySelector('.title');
+    if(letter.length === show.length) {
         overlay.className = 'win';
         overlay.style.display = 'flex';
-        headline.textContent = 'You Won!'
-        resetGame();
-    } else if (missed >= 5) {
+        title.textContent = 'You Won!'
+    } else if (missed > 4) {
         overlay.className = 'lose';
         overlay.style.display = 'flex';
-        headline.textContent = 'Try Again';
-        resetGame();
+        title.textContent = 'Try Again';
     }
  }
 
