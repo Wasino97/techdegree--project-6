@@ -12,11 +12,11 @@ btnReset.addEventListener('click', (e) => {
 
 //Array of quotes
 const phraseArray = [
-    "Can't make a tomlett without breaking a couple greggs",
-    "You're my boy you're my number one boy",
-    'Then how about tom with some fucking greg sprinkles',
-    'Connor roy was intrested in politics from a very young age',
-    'We just walked in on mom and dad fucking us'
+    "cant make a tomlett without breaking a couple greggs",
+    "youre my boy you're my number one boy",
+    'then how about tom with some fucking greg sprinkles',
+    'connor roy was intrested in politics from a very young age',
+    'we just walked in on mom and dad fucking us'
 ];
 
 //Function to pick a random quote from the array and split into individual characters
@@ -49,11 +49,10 @@ addPhraseToDisplay(randomPhrase);
 function checkLetter(button){
     const li = document.querySelectorAll('li');
     let match = null;
-        for (i = 0; i < button.length; i++){
-            li = button[i];
-                if (li[i] === 'letter'){
-                    li.className = 'show';
-                    match = button.value;
+        for (i = 0; i < li.length; i++){
+                if (li[i].textContent === button.textContent){
+                    match = (li[i] = button.textContent);
+                    li[i].className = 'show';
                 }
         }
     return match;
@@ -62,9 +61,34 @@ function checkLetter(button){
  //Click event to give the clicked letter the class of chosen
  keyBoard.addEventListener('click', (e) => {
     const btn = e.target;
-        if(btn.tagName !== 'BUTTON' || btn.className === 'chosen') {
-            return;
+        if(btn.tagName === 'BUTTON' || btn.className === 'chosen') {
+            btn.className = "chosen";
+            btn.disabled = true;
+            let letterFound = checkLetter(btn);
+            if(letterFound === "null" || letterFound !== btn.textContent) {
+               const heartLoss = document.querySelectorAll('.tries img')[missed]
+               heartLoss.src='images/lostHeart.png';
+               heartLoss.className = 'lost';
+               missed++;
+            }
+            checkWin();
         }
-    btn.className = "chosen"
-    let letterFound = checkLetter(btn);
  })
+
+ function checkWin(){
+    const letterClass = document.querySelectorAll('.letter');
+    const showClass = document.querySelectorAll('.show');
+    const headline = document.querySelector('h2','.title');
+    if(letterClass.length === showClass.length) {
+        overlay.className = 'win';
+        overlay.style.display = 'flex';
+        headline.textContent = 'You Won!'
+        resetGame();
+    } else if (missed >= 5) {
+        overlay.className = 'lose';
+        overlay.style.display = 'flex';
+        headline.textContent = 'Try Again';
+        resetGame();
+    }
+ }
+
