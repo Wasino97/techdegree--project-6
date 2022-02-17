@@ -36,9 +36,9 @@ function addPhraseToDisplay(arr){
             text.textContent = splitPhrase[i];
             phrase.appendChild(text);
                 if (splitPhrase[i] === " "){
-                    text.className = 'space';
+                    text.classList.add('space');
                 } else {
-                    text.className = 'letter';
+                    text.classList.add('letter');
                 }
             }
 };
@@ -52,7 +52,7 @@ function checkLetter(button){
         for (i = 0; i < li.length; i++){
                 if (li[i].textContent === button.textContent){
                     match = (li[i] = button.textContent);
-                    li[i].className = 'show';
+                    li[i].classList.add('show');
                 }
         }
     return match;
@@ -62,7 +62,7 @@ function checkLetter(button){
  keyBoard.addEventListener('click', (e) => {
     const btn = e.target;
         if(btn.tagName === 'BUTTON' || btn.className === 'chosen') {
-            btn.className = "chosen";
+            btn.classList.add("chosen");
             btn.disabled = true;
             let letterFound = checkLetter(btn);
             if(letterFound === "null" || letterFound !== btn.textContent) {
